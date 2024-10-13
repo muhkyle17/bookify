@@ -10,7 +10,7 @@ const Header = () => {
         <div class='flex h-16 items-center justify-between'>
           <div class='flex items-center'>
             <Link href='/'>
-              <Image class='h-12 w-12' src={logo} alt='Instaroom Logo' priority={true} />
+              <Image class='h-12 w-12' src={logo} alt='Bookify Logo' priority={true} />
             </Link>
             <div class='hidden md:block'>
               <div class='ml-10 flex items-baseline space-x-4'>
@@ -36,17 +36,28 @@ const Header = () => {
 
           <div class='ml-auto'>
             <div class='ml-4 flex items-center md:ml-6'>
-              <Link href='login.html' class='mr-3 text-gray-800 hover:text-gray-600'>
-                <i class='fa fa-sign-in'></i> Login
+              <Link
+                href='login.html'
+                class='mr-3 text-gray-800 hover:text-gray-600 flex flex-row items-center gap-2'>
+                <FaSignInAlt /> Login
               </Link>
-              <Link href='register.html' class='mr-3 text-gray-800 hover:text-gray-600'>
-                <i class='fa fa-user'></i> Register
+              <Link
+                href='register.html'
+                class='mr-3 text-gray-800 hover:text-gray-600 flex flex-row items-center gap-2'>
+                <FaUser />
+                Register
               </Link>
-              <Link href='my-rooms.html'>
-                <i class='fa fa-building'></i> My Rooms
+              <Link
+                href='my-rooms.html'
+                className='mr-3 text-gray-800 hover:text-gray-600 flex flex-row items-center gap-2'>
+                <FaBuilding />
+                My Rooms
               </Link>
-              <Link href='login.html' class='mx-3 text-gray-800 hover:text-gray-600'>
-                <i class='fa fa-sign-out'></i> Sign Out
+              <Link
+                href='login.html'
+                class='text-gray-800 hover:text-gray-600 flex flex-row items-center gap-2'>
+                <FaSignOutAlt />
+                Sign Out
               </Link>
             </div>
           </div>
