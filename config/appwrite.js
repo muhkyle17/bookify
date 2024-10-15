@@ -7,10 +7,6 @@ const createAdminClient = async () => {
     .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT)
     .setKey(process.env.NEXT_APPWRITE_KEY)
 
-  console.log(Account, 'Account') // !TEMPORARY
-  console.log(Databases, 'Databases') // !TEMPORARY
-  console.log(Storage, 'Storage') // !TEMPORARY
-
   return {
     get account() {
       return new Account(client)
