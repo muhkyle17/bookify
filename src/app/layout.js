@@ -8,7 +8,7 @@ const inter = Inter({
 })
 
 export const metadata = {
-  title: 'Instaroom App | Book a Room',
+  title: 'Bookify App | Book a Room',
   description: 'Book a meeting or conference room for your team',
 }
 
