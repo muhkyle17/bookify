@@ -10,9 +10,6 @@ import getSingleRoom from '@/src/app/actions/getSingleRoom'
 const RoomPage = async ({ params }) => {
   const { id } = params
   const room = await getSingleRoom(id)
-  // const room = rooms.find(room => room.$id === id)
-
-  console.log(room, 'room')
 
   if (!room) {
     return <Heading title='Room Not Found' />
