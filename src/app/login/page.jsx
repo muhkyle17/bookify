@@ -8,7 +8,7 @@ const Login = () => {
           <h2 className='text-2xl font-bold text-center text-gray-800 mb-6'>Login</h2>
 
           <div className='mb-4'>
-            <label for='email' className='block text-gray-700 font-bold mb-2'>
+            <label htmlFor='email' className='block text-gray-700 font-bold mb-2'>
               Email
             </label>
             <input
@@ -21,7 +21,7 @@ const Login = () => {
           </div>
 
           <div className='mb-6'>
-            <label for='password' className='block text-gray-700 font-bold mb-2'>
+            <label htmlFor='password' className='block text-gray-700 font-bold mb-2'>
               Password
             </label>
             <input
