@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useEffect } from 'react'
 import { useFormState } from 'react-dom'
+import toast from 'react-hot-toast'
 import createSession from '../actions/createSession'
 
 const Login = () => {
@@ -10,7 +11,7 @@ const Login = () => {
 
   useEffect(() => {
     if (state.error) {
-      console.log(state.error)
+      toast.error(state.error)
     }
   }, [state])
 

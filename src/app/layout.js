@@ -1,5 +1,6 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { Toaster } from 'react-hot-toast'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <Header />
         <main className='mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8'>{children}</main>
+        <Toaster />
         <Footer />
       </body>
     </html>
