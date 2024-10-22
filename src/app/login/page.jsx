@@ -3,15 +3,20 @@
 import Link from 'next/link'
 import { useEffect } from 'react'
 import { useFormState } from 'react-dom'
+import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
 import createSession from '../actions/createSession'
 
 const Login = () => {
   const [state, formAction] = useFormState(createSession, {})
 
+  const router = useRouter()
+
   useEffect(() => {
-    if (state.error) {
-      toast.error(state.error)
+    if (state.error) toast.error(state.error)
+    if (state.success) {
+      toast.success('Logged in successfully!')
+      router.push('/')
     }
   }, [state])
 

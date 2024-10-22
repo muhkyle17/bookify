@@ -12,7 +12,9 @@ async function createSession(previousState, formData) {
     }
   }
 
-  console.log(email, password)
+  return {
+    success: true,
+  }
 }
 
 export default createSession
