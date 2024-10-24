@@ -32,10 +32,15 @@ async function createSession(previousState, formData) {
       expires: new Date(session.expire),
       path: '/',
     })
-  } catch (error) {}
 
-  return {
-    success: true,
+    return {
+      success: true,
+    }
+  } catch (error) {
+    console.log('Authentication Error: ', error)
+    return {
+      error: 'Invalid Credentials',
+    }
   }
 }
 
