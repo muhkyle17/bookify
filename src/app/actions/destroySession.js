@@ -1,45 +1,34 @@
 'use server'
 
-import { createAdminClient } from '@/config/appwrite'
+import { createSessionClient } from '@/config/appwrite'
 import { cookies } from 'next/headers'
 
-async function createSession(previousState, formData) {
-  console.log(formData, 'formData')
+async function createSession() {
+  // Retrieve the session cookie
+  const sessionCookie = cookies.get('appwrite-session')
 
-  console.log(formData.name)
-
-  const email = formData.get('email')
-  const password = formData.get('password')
-
-  if (!email || !password) {
+  if (!sessionCookie) {
     return {
-      error: 'Please fill out all fields',
+      error: 'No session cookie found',
     }
   }
 
-  // Get account instance
-  const { account } = await createAdminClient()
-
   try {
-    // Generate a session
-    const session = await account.createEmailPasswordSession(email, password)
+    const { account } = await createSessionClient(sessionCookie.value)
+    console.log(account, 'account')
 
-    // Create cookie
-    cookies().set('appwrite-session', session.secret, {
-      httpOnly: true,
-      secure: true,
-      sameSite: 'strict',
-      expires: new Date(session.expire),
-      path: '/',
-    })
+    // Delete current session
+    await account.deleteSession('current')
+
+    // Clear session cookie
+    cookies().delete('appwrite-session')
 
     return {
       success: true,
     }
   } catch (error) {
-    console.log('Authentication Error: ', error)
     return {
-      error: 'Invalid Credentials',
+      error: 'Error deleting session',
     }
   }
 }
