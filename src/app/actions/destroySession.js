@@ -3,9 +3,9 @@
 import { createSessionClient } from '@/config/appwrite'
 import { cookies } from 'next/headers'
 
-async function createSession() {
+async function destroySession() {
   // Retrieve the session cookie
-  const sessionCookie = cookies.get('appwrite-session')
+  const sessionCookie = cookies().get('appwrite-session')
 
   if (!sessionCookie) {
     return {
@@ -33,4 +33,4 @@ async function createSession() {
   }
 }
 
-export default createSession
+export default destroySession
