@@ -4,10 +4,6 @@ import { createAdminClient } from '@/config/appwrite'
 import { cookies } from 'next/headers'
 
 async function createSession(previousState, formData) {
-  console.log(formData, 'formData')
-
-  console.log(formData.name)
-
   const email = formData.get('email')
   const password = formData.get('password')
 
