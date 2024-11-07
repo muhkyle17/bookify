@@ -73,12 +73,16 @@ const Header = () => {
                   </Link>
                 </>
               )}
-              <Link href='/rooms/my'>
-                <FaBuilding className='inline mr-1' /> My Rooms
-              </Link>
-              <button onClick={handleLogout} className='mx-3 text-gray-800 hover:text-gray-600'>
-                <FaSignOutAlt className='inline mr-1' /> Sign Out
-              </button>
+              {isAuthenticated && (
+                <>
+                  <Link href='/rooms/my'>
+                    <FaBuilding className='inline mr-1' /> My Rooms
+                  </Link>
+                  <button onClick={handleLogout} className='mx-3 text-gray-800 hover:text-gray-600'>
+                    <FaSignOutAlt className='inline mr-1' /> Sign Out
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>
