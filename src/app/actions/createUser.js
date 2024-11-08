@@ -27,6 +27,24 @@ async function createUser(previousState, formData) {
   }
 
   // Get account instance
+  const { account } = await createAdminClient()
+
+  try {
+    // Create user
+    const createdUser = await account.create(ID.unique(), email, password, name) // !!TEMP created user function name
+
+    console.log(createdUser, 'createdUser')
+
+    return {
+      success: true,
+    }
+  } catch (error) {
+    console.log('Registration Error', error)
+
+    return {
+      error: 'Could not register user',
+    }
+  }
 }
 
 export default createUser
