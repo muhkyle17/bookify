@@ -41,6 +41,10 @@ async function createUser(previousState, formData) {
   } catch (error) {
     console.log('Registration Error', error)
 
+    console.log(error.type, 'error.type')
+
+    if (error.type === 'user_already_exists') return { error: 'User Already Exists' }
+
     return {
       error: 'Could not register user',
     }
