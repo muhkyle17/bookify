@@ -8,7 +8,7 @@ import { createSessionClient } from '@/config/appwrite'
 
 async function getMyRooms() {
   const sessionCookie = cookies().get('appwrite-session')
-  if (!session) {
+  if (!sessionCookie) {
     redirect('/login')
   }
 
