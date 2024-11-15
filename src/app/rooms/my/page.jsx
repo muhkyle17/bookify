@@ -1,8 +1,18 @@
-const MyRoomsPage = () => {
+import Heading from '../../components/Heading'
+import getMyRooms from '../../actions/getMyRooms'
+
+const MyRoomsPage = async () => {
+  const rooms = await getMyRooms()
+
   return (
-    <div>
-      <p>My rooms</p>
-    </div>
+    <>
+      <Heading title='My Rooms' />
+      {rooms.length > 0 ? (
+        rooms.map(room => <h3 key={room.$id}>{room.name}</h3>)
+      ) : (
+        <p>You have no room listings</p>
+      )}
+    </>
   )
 }
 
