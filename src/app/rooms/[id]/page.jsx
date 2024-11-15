@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { FaChevronLeft } from 'react-icons/fa'
 
 import Heading from '@/src/app/components/Heading'
-import rooms from '@/data/rooms.json'
 import BookingForm from '@/src/app/components/BookingForm'
 import getSingleRoom from '@/src/app/actions/getSingleRoom'
 
