@@ -1,13 +1,33 @@
+'use client'
+import { useEffect } from 'react'
+import { useFormState } from 'react-dom'
+import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
+
 import Heading from '@/src/app/components/Heading'
+import createRoom from '@/src/app/actions/createRoom'
 
 const AddRoomPage = () => {
+  const [state, formAction] = useFormState(createRoom, {})
+
+  const router = useRouter()
+
+  useEffect(() => {
+    if (state.error) toast.error(state.error)
+
+    if (state.success) {
+      toast.success('Room created successfully')
+      router.push('/')
+    }
+  }, [state])
+
   return (
     <>
       <Heading title='Add a Room' />
       <div className='bg-white shadow-lg rounded-lg p-6 w-full'>
-        <form>
+        <form action={formAction}>
           <div className='mb-4'>
-            <label htmlFor='name' class='block text-gray-700 font-bold mb-2'>
+            <label htmlFor='name' className='block text-gray-700 font-bold mb-2'>
               Room Name
             </label>
             <input
