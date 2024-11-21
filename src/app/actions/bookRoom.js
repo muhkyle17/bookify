@@ -4,6 +4,7 @@ import { cookies } from 'next/headers'
 import { ID } from 'node-appwrite'
 import { redirect } from 'next/navigation'
 import checkAuth from './checkAuth'
+import { revalidatePath } from 'next/cache'
 
 import { createSessionClient } from '@/config/appwrite'
 
@@ -45,13 +46,14 @@ async function bookRoom(previousState, formData) {
     // Create booking
     const newBooking = await databases.createDocument(
       process.env.NEXT_PUBLIC_APPWRITE_DATABASE,
-      process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ROOMS,
+      process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_BOOKINGS,
       ID.unique(),
       bookingData
     )
 
     // Revalidate cache
     revalidatePath('/bookings', 'layout')
+
     return {
       success: true,
     }
